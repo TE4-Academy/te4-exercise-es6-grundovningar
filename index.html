@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 Grundövningar</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 2em auto; background: #f9f9f9; }
+        h1 { color: #2a4d7a; }
+        ol { margin-left: 1em; }
+        .tips { color: #555; font-size: 0.95em; margin-bottom: 1em; }
+        code { background: #eee; padding: 2px 4px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>ES6 Grundövningar</h1>
+    <p>Du hittar sex övningar nedan. Lös varje uppgift i tur och ordning genom att skriva din kod i separata JavaScript-filer.<br>
+    <b>Så här arbetar du med övningarna:</b></p>
+    <ol>
+        <li>Skapa en ny <code>.js</code>-fil för varje övning (t.ex. <code>exercise1.js</code>).</li>
+        <li>Skriv din lösning i JavaScript-filen.</li>
+        <li>Lägg till en <code>&lt;script src="exercise1.js"&gt;&lt;/script&gt;</code>-tagg längst ner i denna HTML-fil.</li>
+        <li>Öppna <code>index.html</code> i din webbläsare.</li>
+        <li>Öppna webbläsarens utvecklarverktyg (F12 eller högerklicka &gt; "Inspect").</li>
+        <li>Gå till fliken <b>Console</b> för att se resultatet av din kod.</li>
+        <li>Använd <code>console.log()</code> för att visa värden och resultat.</li>
+    </ol>
+    <div class="tips">
+        <b>Tips:</b> Testa och experimentera! Ändra värden och se vad som händer.
+    </div>
+
+    <h2>Övning 1: Funktioner & Return</h2>
+    <p><b>Uppgift:</b> Skriv en funktion som tar emot två tal som argument och returnerar deras summa.</p>
+    <p><b>In-värden:</b> Två tal, t.ex. 3 och 7</p>
+    <p><b>Ut-värde:</b> Summan av talen, t.ex. 10</p>
+    <p><b>Tips:</b> Använd function-syntax. Kom ihåg att använda return för att skicka tillbaka resultatet.</p>
+
+    <h2>Övning 2: Arrow Functions</h2>
+    <p><b>Uppgift:</b> Gör om funktionen från övning 1 till en arrow function.</p>
+    <p><b>In-värden:</b> Två tal, t.ex. 5 och 8</p>
+    <p><b>Ut-värde:</b> Summan av talen, t.ex. 13</p>
+    <p><b>Tips:</b> Arrow functions har syntaxen: (a, b) => a + b. Testa att anropa funktionen och logga resultatet.</p>
+
+    <h2>Övning 3: Loopar (for, for...of)</h2>
+    <p><b>Uppgift:</b> Skapa en array med fem tal. Summera alla värden med en for-loop. Gör sedan samma sak med en for...of-loop.</p>
+    <p><b>In-värde:</b> Array: [2, 4, 6, 8, 10]</p>
+    <p><b>Ut-värde:</b> Summan: 30</p>
+    <p><b>Tips:</b> Använd en variabel för att lagra summan. Jämför skillnaden mellan klassisk for-loop och for...of.</p>
+
+    <h2>Övning 4: Array.map()</h2>
+    <p><b>Uppgift:</b> Skapa en array med namn. Använd map för att skapa en ny array där alla namn är versaler.</p>
+    <p><b>In-värde:</b> Array: ["anna", "erik", "sara"]</p>
+    <p><b>Ut-värde:</b> Array: ["ANNA", "ERIK", "SARA"]</p>
+    <p><b>Tips:</b> Metoden toUpperCase() gör en sträng till versaler. map returnerar en ny array.</p>
+
+    <h2>Övning 5: Template Strings</h2>
+    <p><b>Uppgift:</b> Skriv ut en hälsning med namn och ålder med hjälp av template literals.</p>
+    <p><b>In-värden:</b> Namn: "Anna", Ålder: 22</p>
+    <p><b>Ut-värde:</b> Sträng: "Hej Anna, du är 22 år gammal."</p>
+    <p><b>Tips:</b> Syntax: `Hej ${namn}, du är ${ålder} år gammal.` Testa att byta namn och ålder.</p>
+
+    <h2>Övning 6: Array.filter()</h2>
+    <p><b>Uppgift:</b> Skapa en array med tal. Använd filter för att plocka ut alla tal över 10.</p>
+    <p><b>In-värde:</b> Array: [5, 12, 8, 130, 44]</p>
+    <p><b>Ut-värde:</b> Array: [12, 130, 44]</p>
+    <p><b>Tips:</b> filter tar en funktion som returnerar true för de värden du vill behålla. Testa med olika gränser än 10.</p>
+
+    <p>Varje övning har tydliga in- och utvärden samt tips för att komma igång. Lycka till!</p>
+</body>
+</html>
