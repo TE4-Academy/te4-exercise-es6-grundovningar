@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array & Object Övningar</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 2em auto; background: #f9f9f9; }
+        h1 { color: #2a4d7a; }
+        ol { margin-left: 1em; }
+        .tips { color: #555; font-size: 0.95em; margin-bottom: 1em; }
+        code { background: #eee; padding: 2px 4px; border-radius: 3px; }
+        .nav { margin-bottom: 2em; }
+        .nav a { margin-right: 1em; color: #2a4d7a; text-decoration: none; }
+        .nav a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html">← Tillbaka till ES6 Grundövningar</a>
+    </div>
+
+    <h1>Array & Object Övningar</h1>
+    <p>Dessa övningar fokuserar på att arbeta med arrayer och objekt. Du kommer att träna på filter, map och andra arraymetoder.<br>
+    <b>Så här arbetar du med övningarna:</b></p>
+    <ol>
+        <li>Skapa en ny <code>.js</code>-fil för varje övning (t.ex. <code>array1.js</code>).</li>
+        <li>Skriv din lösning i JavaScript-filen.</li>
+        <li>Lägg till en <code>&lt;script src="array1.js"&gt;&lt;/script&gt;</code>-tagg längst ner i denna HTML-fil.</li>
+        <li>Öppna <code>index2.html</code> i din webbläsare med Live Server.</li>
+        <li>Öppna webbläsarens utvecklarverktyg (F12) och gå till fliken <b>Console</b>.</li>
+        <li>Använd <code>console.log()</code> för att visa värden och resultat.</li>
+    </ol>
+    <div class="tips">
+        <b>Tips:</b> Börja med att skapa arrayen med personer. Använd den i alla övningar!
+    </div>
+
+    <h2>Startdata</h2>
+    <p>Använd denna array med 10 personer fördelade på 3 städer i alla övningar:</p>
+    <code>
+        const personer = [<br>
+        &nbsp;&nbsp;{ fornamn: "Anna", efternamn: "Andersson", stad: "Stockholm" },<br>
+        &nbsp;&nbsp;{ fornamn: "Erik", efternamn: "Eriksson", stad: "Göteborg" },<br>
+        &nbsp;&nbsp;{ fornamn: "Sara", efternamn: "Svensson", stad: "Malmö" },<br>
+        &nbsp;&nbsp;{ fornamn: "Lars", efternamn: "Larsson", stad: "Stockholm" },<br>
+        &nbsp;&nbsp;{ fornamn: "Emma", efternamn: "Ek", stad: "Göteborg" },<br>
+        &nbsp;&nbsp;{ fornamn: "Nils", efternamn: "Nilsson", stad: "Malmö" },<br>
+        &nbsp;&nbsp;{ fornamn: "Lisa", efternamn: "Lindberg", stad: "Stockholm" },<br>
+        &nbsp;&nbsp;{ fornamn: "Johan", efternamn: "Johansson", stad: "Göteborg" },<br>
+        &nbsp;&nbsp;{ fornamn: "Maria", efternamn: "Månsson", stad: "Malmö" },<br>
+        &nbsp;&nbsp;{ fornamn: "Per", efternamn: "Persson", stad: "Stockholm" }<br>
+        ];
+    </code>
+
+    <h2>Övning 1: Filtrera efter stad</h2>
+    <p><b>Uppgift:</b> Använd <code>filter()</code> för att hitta alla personer som bor i Stockholm.</p>
+    <p><b>In-värde:</b> Arrayen med alla 10 personer</p>
+    <p><b>Ut-värde:</b> Array med 4 personer från Stockholm</p>
+    <p><b>Tips:</b> <code>filter(person => person.stad === "Stockholm")</code></p>
+
+    <h2>Övning 2: Skapa fullständiga namn</h2>
+    <p><b>Uppgift:</b> Använd <code>map()</code> för att skapa en array med fullständiga namn (förnamn + efternamn).</p>
+    <p><b>In-värde:</b> Arrayen med alla 10 personer</p>
+    <p><b>Ut-värde:</b> Array med strängar: ["Anna Andersson", "Erik Eriksson", ...]</p>
+    <p><b>Tips:</b> <code>map(person => person.fornamn + " " + person.efternamn)</code></p>
+
+    <h2>Övning 3: Hitta specifik person</h2>
+    <p><b>Uppgift:</b> Använd <code>find()</code> för att hitta personen med efternamnet "Svensson".</p>
+    <p><b>In-värde:</b> Arrayen med alla 10 personer</p>
+    <p><b>Ut-värde:</b> Ett objekt: { fornamn: "Sara", efternamn: "Svensson", stad: "Malmö" }</p>
+    <p><b>Tips:</b> <code>find(person => person.efternamn === "Svensson")</code></p>
+
+    <h2>Övning 4: Räkna personer per stad</h2>
+    <p><b>Uppgift:</b> Skapa ett objekt som visar hur många personer som bor i varje stad.</p>
+    <p><b>In-värde:</b> Arrayen med alla 10 personer</p>
+    <p><b>Ut-värde:</b> Objekt: { Stockholm: 4, Göteborg: 3, Malmö: 3 }</p>
+    <p><b>Tips:</b> Använd <code>reduce()</code> eller en for...of-loop med ett tomt objekt.</p>
+
+    <h2>Övning 5: Lägg till VIP-status</h2>
+    <p><b>Uppgift:</b> Använd <code>map()</code> för att lägga till en <code>vip</code>-egenskap. Alla med efternamn som börjar på "A" eller "E" är VIP.</p>
+    <p><b>In-värde:</b> Arrayen med alla 10 personer</p>
+    <p><b>Ut-värde:</b> Array med samma personer men med vip: true/false</p>
+    <p><b>Tips:</b> <code>person.efternamn[0] === "A" || person.efternamn[0] === "E"</code></p>
+
+    <h2>Övning 6: Filtrera VIP-personer från specifik stad</h2>
+    <p><b>Uppgift:</b> Kombinera filter och map. Hitta alla VIP-personer från Göteborg och visa bara deras namn.</p>
+    <p><b>In-värde:</b> Arrayen med personer (med VIP-status från övning 5)</p>
+    <p><b>Ut-värde:</b> Array med namn: ["Erik Eriksson", "Emma Ek"]</p>
+    <p><b>Tips:</b> Koppla flera metoder: <code>.filter().map()</code></p>
+
+</body>
+</html>
