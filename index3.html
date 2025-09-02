@@ -10,45 +10,51 @@
 </head>
 
 <body>
-    <div class="nav" id="nav">
-        <a href="index.html">← ES6 Grundövningar</a>
-        <a href="index2.html">← Array & Object Övningar</a>
-    </div>
-
     <h1>Personregister - HTML UI</h1>
     <p>Detta är en interaktiv version av övningarna från index2.html. Här ska du själv skriva JavaScript-koden för att
         implementera alla funktioner.</p>
 
     <div class="tips" id="tips">
-        <b>Uppgift:</b> Komplettera JavaScript-koden nedanför för att få alla knappar att fungera.<br>
+        Komplettera JavaScript-koden nedanför för att få alla knappar att fungera.<br>
+        <b>Snabbstart:</b> Avkommentera koden i visaAllaPersoner() för att komma igång direkt!<br>
     </div>
 
     <div class="controls" id="controls">
-        <h3>Kontroller</h3>
-        <label for="stadFilter">Filtrera efter stad:</label>
+        <h3>Steg 1: Grundfunktioner (ENKLA)</h3>
+        <button onclick="visaAllaPersoner()">Visa alla personer</button>
+        <button onclick="visaFullaNamn()">Visa fullständiga namn</button>
+        <button onclick="sökEfternamn()">Sök "Svensson"</button>
+
+        <h3>Steg 2: Filtrering (MEDEL)</h3>
+        <button onclick="visaStockholmare()">Visa personer från Stockholm</button>
+        <button onclick="visaVipPersoner()">Visa VIP-personer</button>
+        <button onclick="visaStatistik()">Visa statistik</button>
+
+        <h3>Steg 3: Avancerad filtrering (SVÅR)</h3>
+        <label for="stadFilter">Välj stad:</label>
         <select id="stadFilter">
             <option value="alla">Alla städer</option>
             <option value="Stockholm">Stockholm</option>
             <option value="Göteborg">Göteborg</option>
             <option value="Malmö">Malmö</option>
         </select>
+        <button onclick="filtreraEfterValdStad()">Filtrera efter vald stad</button>
 
-        <label for="vipFilter">VIP-filter:</label>
-        <select id="vipFilter" disabled>
+        <label for="vipFilter">Välj VIP-status:</label>
+        <select id="vipFilter">
             <option value="alla">Alla personer</option>
             <option value="vip">Endast VIP</option>
             <option value="icke-vip">Endast icke-VIP</option>
         </select>
+        <button onclick="filtreraEfterValdVip()">Filtrera efter VIP-status</button>
 
-        <button onclick="visaAllaPersoner()">Visa alla personer</button>
-        <button onclick="visaFullaNamn()" disabled>Visa fullständiga namn</button>
-        <button onclick="visaStatistik()" disabled>Visa statistik</button>
-        <button onclick="sökEfternamn()" disabled>Sök "Svensson"</button>
+        <button onclick="kombineraFilter()">Kombinera båda filter</button>
     </div>
 
     <div id="resultat" class="result-section">
         <h3>Resultat</h3>
-        <p>Klicka på "Visa alla personer" för att komma igång, eller använd knapparna för att testa olika funktioner.
+        <p>Klicka på "Visa alla personer" för att komma igång, och använd sedan knapparna för att testa olika
+            funktioner, allt eftersom du skriver koden.
         </p>
     </div>
 
@@ -67,6 +73,8 @@
             { fornamn: "Per", efternamn: "Persson", stad: "Stockholm", vip: false }
         ];
 
+        // ========== HJÄLPFUNKTIONER (Data-processing) ==========
+
         // TODO: Skriv funktionen skapaFullaNamn() - samma som övning 2 från index2 (ENKEL)
         // Tips: använd map() för att skapa förnamn + " " + efternamn
         function skapaFullaNamn(personLista) {
@@ -81,20 +89,21 @@
 
         // TODO: Skriv funktionen filtreraEfterStad() - samma som övning 1 från index2 (MEDEL)
         // Tips: använd filter() och kontrollera person.stad
+        // Tips: om stad === "alla", returnera hela personer-arrayen
         function filtreraEfterStad(stad) {
-            if (stad === "alla") return personer;
-            return personer.filter(person => person.stad === stad);
-        }
-
-        // TODO: Skriv funktionen räknaPersonerPerStad() - samma som övning 4 från index2 (MEDEL)
-        // Tips: använd reduce() eller for...of-loop med ett tomt objekt
-        function räknaPersonerPerStad() {
             // Din kod här...
         }
 
-        // TODO: Skriv funktionen vipFrånStad() - samma som övning 6 från index2 (SVÅR)
-        // Tips: använd filter() för stad OCH vip, sedan map() för namn
-        function vipFrånStad(stad) {
+        // TODO: Skriv funktionen filtreraVipStatus() - filtrera personer baserat på VIP-status (MEDEL)
+        // Tips: använd filter() och kontrollera person.vip
+        // Tips: hantera tre fall: "alla", "vip", "icke-vip"
+        function filtreraVipStatus(vipStatus) {
+            // Din kod här...
+        }
+
+        // TODO: Skriv funktionen räknaPersonerPerStad() - samma som övning 4 från index2 (MEDEL-SVÅR)
+        // Tips: använd reduce() eller for...of-loop med ett tomt objekt
+        function räknaPersonerPerStad() {
             // Din kod här...
         }
 
@@ -117,49 +126,67 @@
             resultat.innerHTML = html;
         }
 
-        // TODO: Skriv funktionen visaAllaPersoner()
-        // Tips: hämta värden från dropdown-menyer med document.getElementById().value
-        // Använd filtreraEfterStad() och filtrera på VIP om det behövs
-        // När VIP-filtreringen fungerar, aktivera VIP-dropdown: document.getElementById('vipFilter').disabled = false;
+        // ========== UI-FUNKTIONER (Enkla funktioner, en per knapp) ==========
+
+        // TODO: Skriv funktionen visaAllaPersoner() (ENKEL)
+        // Tips: använd visaPersoner() med hela personer-arrayen
+        // Tips: ge en passande titel som "Alla personer"
+        // SNABBSTART: Avkommentera raden nedan för att komma igång snabbt!
         function visaAllaPersoner() {
-            const stad = document.getElementById('stadFilter').value;
-            const vipFilter = document.getElementById('vipFilter').value;
-
-            let filtrerade = filtreraEfterStad(stad);
-
-            // TODO: Lägg till VIP-filtrering här
-            // Tips: kontrollera vipFilter-värdet och filtrera på person.vip
-
-            visaPersoner(filtrerade, `Filtrerade personer`);
+            // visaPersoner(personer, "Alla personer");
+            // Din kod här...
         }
 
-        // TODO: Skriv funktionen visaFullaNamn() (ENKEL UI-funktion)
-        // Tips: använd skapaFullaNamn() och visa resultatet som en lista i HTML
-        // När funktionen är klar, ta bort disabled från knappen i HTML
+        // TODO: Skriv funktionen visaFullaNamn() (ENKEL)
+        // Tips: använd skapaFullaNamn() och visa namnen som en enkel lista
         function visaFullaNamn() {
             // Din kod här...
         }
 
-        // TODO: Skriv funktionen sökEfternamn() (ENKEL UI-funktion)
-        // Tips: använd hittaSvensson() och visa personen i en person-card
-        // När funktionen är klar, ta bort disabled från knappen i HTML
+        // TODO: Skriv funktionen sökEfternamn() (ENKEL)
+        // Tips: använd hittaSvensson() och visa personen med visaPersoner()
         function sökEfternamn() {
             // Din kod här...
         }
 
-        // TODO: Skriv funktionen visaStatistik() (SVÅR UI-funktion)
+        // TODO: Skriv funktionen visaStockholmare() (MEDEL)
+        // Tips: använd filtreraEfterStad("Stockholm") och visa resultatet
+        function visaStockholmare() {
+            // Din kod här...
+        }
+
+        // TODO: Skriv funktionen visaVipPersoner() (MEDEL)
+        // Tips: använd filtreraVipStatus("vip") och visa resultatet
+        function visaVipPersoner() {
+            // Din kod här...
+        }
+
+        // TODO: Skriv funktionen visaStatistik() (MEDEL-SVÅR)
         // Tips: använd räknaPersonerPerStad() och räkna VIP-medlemmar
-        // Visa resultatet i stat-card divs
-        // När funktionen är klar, ta bort disabled från knappen i HTML
         function visaStatistik() {
             // Din kod här...
         }
 
-        // Event listeners för dropdown-filter
-        document.getElementById('stadFilter').addEventListener('change', visaAllaPersoner);
-        document.getElementById('vipFilter').addEventListener('change', visaAllaPersoner);
+        // TODO: Skriv funktionen filtreraEfterValdStad() (SVÅR)
+        // Tips: hämta värdet från stadFilter och använd filtreraEfterStad()
+        function filtreraEfterValdStad() {
+            // Din kod här...
+        }
 
-        // Starta inte automatiskt med att visa alla personer, utan man måste klicka på "Visa alla personer"
+        // TODO: Skriv funktionen filtreraEfterValdVip() (SVÅR)
+        // Tips: hämta värdet från vipFilter och använd filtreraVipStatus()
+        function filtreraEfterValdVip() {
+            // Din kod här...
+        }
+
+        // TODO: Skriv funktionen kombineraFilter() (MYCKET SVÅR)
+        // Tips: hämta båda filter-värden och kombinera filtreringarna
+        function kombineraFilter() {
+            // Din kod här...
+        }
+
+        // Starta inte automatiskt med att visa alla personer
+        // Användaren måste klicka på "Visa alla personer" för att komma igång
         // visaAllaPersoner();
     </script>
 </body>
